@@ -5,45 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel E-commerce</title>
-    @vite('resources/css/app.css')
-</head>
-<body class="antialiased bg-gray-100 dark:bg-gray-900">
 
-    <div class="relative flex items-top justify-center min-h-screen sm:items-center py-4 sm:pt-0">
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 text-center">
+    <!-- Bootstrap CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body class="bg-light antialiased">
+
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center min-vh-100 py-4">
+        <div class="text-center p-4">
 
             {{-- ✅ Show flash success message --}}
             @if(session('status'))
-                <p class="mb-4 text-green-600 font-semibold">
+                <div class="alert alert-success mb-4" role="alert">
                     {{ session('status') }}
-                </p>
+                </div>
             @endif
 
-            <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">
+            <h1 class="display-4 fw-bold text-dark mb-4">
                 🚀 Welcome to Laravel E-commerce
             </h1>
 
             {{-- ✅ Show login/register if not logged in --}}
             @guest
-                <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+                <p class="lead text-muted mt-4">
                     Please 
-                    <a href="{{ route('login') }}" class="text-blue-500 hover:underline">Login</a>
+                    <a href="{{ route('login') }}" class="text-decoration-none text-primary">Login</a>
                     or 
-                    <a href="{{ route('register') }}" class="text-blue-500 hover:underline">Register</a>
+                    <a href="{{ route('register') }}" class="text-decoration-none text-primary">Register</a>
                     to continue.
                 </p>
             @endguest
 
             {{-- ✅ Show logout if logged in --}}
             @auth
-                <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
-                    Welcome back, <span class="font-bold">{{ Auth::user()->name }}</span> 🎉
+                <p class="lead text-muted mt-4">
+                    Welcome back, <span class="fw-bold text-dark">{{ Auth::user()->name }}</span> 🎉
                 </p>
 
-                <form action="{{ route('logout') }}" method="POST" class="mt-6">
+                <form action="{{ route('logout') }}" method="POST" class="mt-4">
                     @csrf
-                    <button type="submit" 
-                        class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                    <button type="submit" class="btn btn-danger btn-lg">
                         Logout
                     </button>
                 </form>
@@ -51,6 +53,9 @@
 
         </div>
     </div>
+
+    <!-- Bootstrap JS Bundle with Popper from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
 </html>

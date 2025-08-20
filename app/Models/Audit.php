@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Audit extends Model
 {
     protected $fillable = [
-        'user_id', 'session_id', 'login_at', 'logout_at', 'ip_address', 'user_agent',
+        'user_id',
+        'user_name',
+        'user_role',
+        'session_id',
+        'login_at',
+        'logout_at',
+        'ip_address',
+        'user_agent',
     ];
 
     protected $casts = [
